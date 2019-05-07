@@ -1,0 +1,46 @@
+{% extends 'base.html' %} <!-- base.html의 내용을 가져오겠다. -->
+{% load static %}
+{% block content %}
+
+
+ <header class="masthead" style="background-image: url('{% static "img/movie.png" %}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>MOVIE REVIEW</h1>
+            <span class="subheading">영화 리뷰를 남겨주세요!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+<div class="row">
+    <form action="#"style="text-align:center; margin:0 auto;" method = "POST">
+      {% csrf_token %}
+      <!--이렇게 input type hidden으로 하면 html에서는 안보이고 값을 hello 라는 이름으로 value 의 값을 전달할 수 있어ㄴ-->
+      <input type = "hidden"  name = "title" value = "어바웃타임">
+      <input type="image" src="{% static 'img/about_time.jpg' %}" alt="Submit" width="280" height="400">
+    </form>
+    
+    <form action="#"style="text-align:center; margin:0 auto;" method = "POST">
+       {% csrf_token %}
+       <input type = "hidden" name = "title" value = "완벽한 타인">
+      <input type="image" src="{% static 'img/perfect_stranger.jpg' %}" alt="Submit" width="280" height="400">
+    </form>
+    
+    <form action="#"style="text-align:center; margin:0 auto;" method = "POST">
+       {% csrf_token %}
+        <input type = "hidden" name = "title" value = "리얼">
+      <input type="image" src="{% static 'img/real.jpg' %}" alt="Submit" width="280" height="400" name ="title" value = "리얼">
+    </form>
+    
+    <form action="#"style="text-align:center; margin:0 auto;" method = "POST">
+       {% csrf_token %}
+      <input type = "hidden" name = "title" value = "월E">
+      <input type="image" src="{% static 'img/wall-e.jpg' %}" alt="Submit" width="280" height="400" name = "title" value = "월E">
+    </form>
+</div>
+{% endblock %}

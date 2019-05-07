@@ -1,0 +1,172 @@
+{% extends 'base.html' %} <!-- base.html의 내용을 가져오겠다. -->
+{% load static %}
+
+{% block content %}
+
+ <header class="masthead" style="background-image: url('{% static "img/lion.jpeg" %}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>LIST</h1>
+            <span class="subheading"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<h1> 모든 리뷰를 확인해보세요!</h1>
+<div class = "row">
+  <div class="w3-container">
+    <div class="w3-card-4"  style="width:300px">
+      <img src="{% static 'img/about_time.jpg' %}" alt="about_time" style="width:300px">
+      <div class="w3-container w3-center">
+        <h5>어바웃 타임</h5>
+        {% for about_time_review in about_time_reviews %}
+        <p>작성자:{{about_time_review.pname}}</p>
+        <p>나이:{{about_time_review.age}}</p>
+        <p>한줄평:{{about_time_review.description}}</p>
+        <p>{{about_time_review.created_at}}</p>
+        <a href="{% url 'edit' about_time_review.pk %}" class = "btn btn-primary">수정하기</a>
+        <a href="#" class = "btn btn-primary" data-toggle="modal" data-target="#exampleModal">삭제하기</a>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">정말 삭제하시겠습니까?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                <form action = "{% url 'delete' about_time_review.pk %}" method = "POST">
+                  {% csrf_token %}
+                  <input type = "submit" value = "삭제" class = "btn btn-primary">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <P>---------------------------</P>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="w3-container">
+    <div class="w3-card-4" style="width:300px">
+      <img src="{% static 'img/perfect_stranger.jpg' %}" alt="perfect_stranger" style="width:300px">
+      <div class="w3-container w3-center">
+        <h5>완벽한 타인</h5>
+        {% for perfect_stranger_review in perfect_stranger_reviews %}
+        <p>작성자:{{perfect_stranger_review.pname}}</p>
+        <p>나이:{{perfect_stranger_review.age}}</p>
+        <p>한줄평:{{perfect_stranger_review.description}}</p>
+        <p>{{perfect_stranger_review.created_at}}</p>
+         <a href="{% url 'edit' perfect_stranger_review.pk %}" class = "btn btn-primary">수정하기</a>
+          <a href="#" class = "btn btn-primary" data-toggle="modal" data-target="#exampleModal">삭제하기</a>
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">정말 삭제하시겠습니까?</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                  <form action = "{% url 'delete' perfect_stranger_review.pk %}" method = "POST">
+                    {% csrf_token %}
+                    <input type = "submit" value = "삭제" class = "btn btn-primary">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        <P>---------------------------</P>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  
+  <div class="w3-container">
+    <div class="w3-card-4" style="width:300px">
+      <img src="{% static 'img/real.jpg' %}" alt="real" style="width:300px">
+      <div class="w3-container w3-center">
+        <h5>리얼</h5>
+        {% for real_review in real_reviews %}
+        <p>작성자:{{real_review.pname}}</p>
+        <p>나이:{{real_review.age}}</p>
+        <p>한줄평:{{real_review.description}}</p>
+        <p>{{real_review.created_at}}</p>
+         <a href="{% url 'edit' real_review.pk %}" class = "btn btn-primary">수정하기</a>
+          <a href="#" class = "btn btn-primary" data-toggle="modal" data-target="#exampleModal">삭제하기</a>
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">정말 삭제하시겠습니까?</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                  <form action = "{% url 'delete' real_review.pk %}" method = "POST">
+                    {% csrf_token %}
+                    <input type = "submit" value = "삭제" class = "btn btn-primary">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        <P>---------------------------</P>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="w3-container">
+    <div class="w3-card-4" style="width:300px">
+      <img src="{% static 'img/wall-e.jpg' %}" alt="wall-e" style="width:300px">
+      <div class="w3-container w3-center">
+        <h5>월E</h5>
+        {% for wall_e_review in wall_e_reviews %}
+        <p>작성자:{{wall_e_review.pname}}</p>
+        <p>나이:{{wall_e_review.age}}</p>
+        <p>한줄평:{{wall_e_review.description}}</p>
+        <p>{{wall_e_review.created_at}}</p>
+         <a href="{% url 'edit' wall_e_review.pk %}" class = "btn btn-primary">수정하기</a>
+          <a href="#" class = "btn btn-primary" data-toggle="modal" data-target="#exampleModal">삭제하기</a>
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">정말 삭제하시겠습니까?</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                  <form action = "{% url 'delete' wall_e_review.pk %}" method = "POST">
+                    {% csrf_token %}
+                    <input type = "submit" value = "삭제" class = "btn btn-primary">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+         <P>---------------------------</P>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
